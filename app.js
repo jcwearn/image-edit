@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -54,12 +55,11 @@ app.use(function(err, req, res, next) {
   });
 });
 
-/*
 var http = require('http');
 var port = process.env.PORT || '3000';
 app.set('port', port);
 
 var server = http.createServer(app);
-server.listen(port);*/
+server.listen(port);
 
 module.exports = app;
