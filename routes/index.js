@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var ImageController = require('../controllers/image_controller.js'),
+var express = require('express'),
+    router = express.Router(),
+    ImageController = require('../controllers/image_controller.js'),
     UploadController = require('../controllers/upload_controller.js'),
-    multer = require('multer'),
-    upload = multer({ dest: __dirname + '../public/uploads/'});
+    path = require('path'),
+    multer = require('multer');
 
 /* GET home page. */
 router.get('/index', function(req, res, next) {
@@ -12,6 +12,7 @@ router.get('/index', function(req, res, next) {
 
 router.get('/image', ImageController.getImage);
 
+var upload = multer({ dest: path.join(__dirname, '../public/uploads/')});
 router.post('/upload', upload.single("image"), UploadController.upload);
 
 module.exports = router;
